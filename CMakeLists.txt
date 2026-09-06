@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.0)
 project(ECallApplication)
+# Build Binder for the host instead of linking the bundled binary archive.
+add_subdirectory(Services/servicemanager/libs)
+add_library(binder ALIAS servicebinder)
+find_library(JSON_C_LIBRARY NAMES json-c REQUIRED)
+add_library(json-c SHARED IMPORTED)
+set_target_properties(json-c PROPERTIES IMPORTED_LOCATION "${JSON_C_LIBRARY}")
 # Add all sub directories
 add_definitions("-Wl,--copy-dt-needed-entries")
 add_subdirectory(Apps/EcallApp)

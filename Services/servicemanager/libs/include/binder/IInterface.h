@@ -71,7 +71,35 @@ protected:
 
 // ----------------------------------------------------------------------
 
+// Newer AIDL proxies support a fallback for UNKNOWN_TRANSACTION.
+// Keep storage per interface without changing the Binder instance layout.
+template<typename INTERFACE>
+class DefaultInterfaceImplementation {
+protected:
+    static sp<INTERFACE>& defaultImplementation() {
+        static sp<INTERFACE> implementation;
+        return implementation;
+    }
+public:
+    static bool setDefaultImpl(const sp<INTERFACE>& implementation) {
+        if (implementation == NULL || defaultImplementation() != NULL) {
+            return false;
+        }
+        defaultImplementation() = implementation;
+        return true;
+    }
+    static INTERFACE* getDefaultImpl() {
+        return defaultImplementation().get();
+    }
+};
+
 #define DECLARE_META_INTERFACE(INTERFACE)                               \
+    static bool setDefaultImpl(const android::sp<I##INTERFACE>& impl) { \
+        return android::DefaultInterfaceImplementation<I##INTERFACE>::setDefaultImpl(impl); \
+    } \
+    static I##INTERFACE* getDefaultImpl() { \
+        return android::DefaultInterfaceImplementation<I##INTERFACE>::getDefaultImpl(); \
+    } \
     static const android::String16 descriptor;                          \
     static android::sp<I##INTERFACE> asInterface(                       \
             const android::sp<android::IBinder>& obj);                  \

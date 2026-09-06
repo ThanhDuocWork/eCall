@@ -1,6 +1,6 @@
 #ifndef AUDIO_ADAPTER_H
 #define AUDIO_ADAPTER_H
-#include "AudioServiceInterface/IAudioServiceInterface.h"
+#include "AudioServiceInterface/AudioServiceInterface.h"
 #include "BnAudioReceiver.h"
 #include "IAdapter.h"
 #include "MessageHandler.h"

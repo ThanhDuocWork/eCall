@@ -29,7 +29,6 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/Button/inc
     ${CMAKE_CURRENT_SOURCE_DIR}/GpioRaspberryPi/inc
     ${CMAKE_CURRENT_SOURCE_DIR}/JsonParser/inc
-    ${CMAKE_CURRENT_SOURCE_DIR}/JsonParser/Libs/JsonC/inc
     ${CMAKE_CURRENT_SOURCE_DIR}/LedHandle/inc
     ${CMAKE_CURRENT_SOURCE_DIR}/Logger/inc
     ${CMAKE_CURRENT_SOURCE_DIR}/MessageHandler/inc
@@ -43,6 +42,6 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/InputProcess/inc
 )
 
-target_link_libraries(Utils PUBLIC JsonParser json-c)
+target_link_libraries(Utils PUBLIC json-c)
 
 install(TARGETS Utils DESTINATION ${CMAKE_SOURCE_DIR})

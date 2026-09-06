@@ -14,6 +14,8 @@
 ** limitations under the License.
 */
 
+#define _GNU_SOURCE
+
 #include "cutils/threads.h"
 
 // For gettid.
@@ -26,6 +28,8 @@
 #include <unistd.h>
 #elif defined(__linux__) && !defined(__ANDROID__)
 #include <linux/unistd.h>
+#include <sys/syscall.h>
+#include <unistd.h>
 #elif defined(_WIN32)
 #include <windows.h>
 #endif

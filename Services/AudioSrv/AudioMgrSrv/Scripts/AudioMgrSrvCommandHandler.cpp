@@ -74,6 +74,7 @@ COMMAND_RESULT AudioMgrSrvCommandHandler::executeCommand(std::string strCommand,
             displayHelp();
         }
     }
+    return COMMAND_RESULT::NG;
 }
 
 COMMAND_RESULT AudioMgrSrvCommandHandler::StopAudio(std::shared_ptr<AudioMgrSrvCommandHandler> self, std::shared_ptr<CommandArg> arg)

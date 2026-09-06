@@ -65,4 +65,5 @@ IState *TransitionTable::setState(eState currentState, eState newState)
     {
         printLog_I("null stateMachine setState");
     }
+    return nullptr;
 }

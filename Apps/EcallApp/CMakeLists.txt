@@ -55,4 +55,4 @@ add_executable(ECallApp ${SOURCES})
 # Link with all system shared libraries
 target_link_libraries(ECallApp PUBLIC pthread binder json-c asound)
 # Link with all user shared libraries
-target_link_libraries(ECallApp PUBLIC Utils JsonParser HMISrv MqttSrv AudioSrv asound)
+target_link_libraries(ECallApp PUBLIC Utils HMISrv MqttSrv AudioSrv asound)
