@@ -1,0 +1,2 @@
+./deps.o
+./ashmem.o

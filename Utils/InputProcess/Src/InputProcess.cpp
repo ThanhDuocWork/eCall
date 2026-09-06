@@ -1,4 +1,5 @@
 #include "InputProcess.h"
+#include <memory>
 inputProcess::inputProcess() : running(false) {}
 
 inputProcess::~inputProcess()

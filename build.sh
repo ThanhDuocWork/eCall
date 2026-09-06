@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 # Define color
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -27,7 +28,7 @@ println()
 check_tool()
 {
     println $NC "Checking $1"
-    STATE=`$1 --help`
+    STATE=`$1 --help 2>/dev/null || true`
     if ! [ "$STATE" = '' ]; then
     println $GREEN "-> Installed"
     else
@@ -39,7 +40,7 @@ check_tool()
 check_library()
 {
     println $NC "Checking library $1"
-    STATE=`ldconfig -p | grep $1`
+    STATE=`ldconfig -p | grep "$1" || true`
     echo $STATE
     if ! [ "$STATE" = '' ]; then
         println $GREEN "-> Installed"
@@ -121,9 +122,7 @@ done
 
 # Checking force build
 if ! [ $FORCE_BUILD = "1" ];then
-    check_environment
-    STATE=$?
-    if [ $STATE = 1 ];then
+    if ! check_environment; then
         println $RED "Environment is not enough for building software, please check"
         exit 1
     fi

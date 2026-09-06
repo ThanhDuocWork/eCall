@@ -131,7 +131,6 @@ void ProcessCallStack::clear() {
 void ProcessCallStack::update() {
     DIR *dp;
     struct dirent *ep;
-    struct dirent entry;
 
     dp = opendir(PATH_SELF_TASK);
     if (dp == NULL) {
@@ -158,8 +157,14 @@ void ProcessCallStack::update() {
      * Each tid is a directory inside of /proc/self/task
      * - Read every file in directory => get every tid
      */
-    int code;
-    while ((code = readdir_r(dp, &entry, &ep)) == 0 && ep != NULL) {
+    int code = 0;
+    while (true) {
+        errno = 0;
+        ep = readdir(dp);
+        if (ep == NULL) {
+            code = errno;
+            break;
+        }
         pid_t tid = -1;
         sscanf(ep->d_name, "%d", &tid);
 
@@ -196,7 +201,7 @@ void ProcessCallStack::update() {
     }
     if (code != 0) { // returns positive error value on error
         ALOGE("%s: Failed to readdir from %s (errno = %d, '%s')",
-              __FUNCTION__, PATH_SELF_TASK, -code, strerror(code));
+              __FUNCTION__, PATH_SELF_TASK, code, strerror(code));
     }
 #endif
 

@@ -3,7 +3,7 @@
 #include "BnMqttReceiver.h"
 #include "IAdapter.h"
 #include "MessageHandler.h"
-#include "MqttServiceInterface/IMqttServiceInterface.h"
+#include "MqttServiceInterface/MqttServiceInterface.h"
 #include "ParameterDef.h"
 #include "ServiceDeathRecipient.h"
 #include <binder/IInterface.h>

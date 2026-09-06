@@ -1,7 +1,7 @@
 
 include_directories(
-	/home/duoctdt/ecall/Tools/Commander/src/../../../Services/AudioSrv/AudioMgrSrv/Scripts
+	/home/thanhduoc/Project-dev/eCall/Tools/Commander/src/../../../Services/AudioSrv/AudioMgrSrv/Scripts
 )
 set( SOURCE_SCRIPTS
-	/home/duoctdt/ecall/Tools/Commander/src/../../../Services/AudioSrv/AudioMgrSrv/Scripts/AudioMgrSrvCommandHandler.cpp
+	/home/thanhduoc/Project-dev/eCall/Tools/Commander/src/../../../Services/AudioSrv/AudioMgrSrv/Scripts/AudioMgrSrvCommandHandler.cpp
 )

@@ -8,7 +8,7 @@
 #include <memory>
 #include <binder/IServiceManager.h>
 #include "ICommandHandler.h"
-#include "IAudioServiceInterface.h"
+#include "AudioServiceInterface/AudioServiceInterface.h"
 #include "PlayAudio.h"
 #include "ParameterDef.h"
 

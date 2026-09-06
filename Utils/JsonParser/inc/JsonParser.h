@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "config.h"
+#include <json-c/json.h>
 
 class JsonParser
 {

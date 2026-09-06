@@ -1,7 +1,7 @@
 #ifndef HMI_ADAPTER_H
 #define HMI_ADAPTER_H
 #include "BnHMIReceiver.h"
-#include "HMIServiceInterface/IHMIServiceInterface.h"
+#include "HMIServiceInterface/HMIServiceInterface.h"
 #include "IAdapter.h"
 #include "MessageHandler.h"
 #include "ParameterDef.h"

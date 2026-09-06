@@ -4,7 +4,7 @@
 #include "MessageHandler.h"
 #include "AudioAdapter.h"
 #include "HMIAdapter.h"
-#include "IAudioReceiver.h"
+#include "AudioReceiver/AudioReceiver.h"
 #include "TransitionTable.h"
 #include "IDLEState.h"
 using namespace EmergencyCall;
